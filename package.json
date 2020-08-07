@@ -1,23 +1,30 @@
 {
   "name": "nertivia.js",
-  "version": "1.2.9",
+  "version": "1.3.0",
   "description": "Nertivia Bot API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "rm -r -f dist/ && tsc",
+    "lint": "standardx ./src/**/*.{ts,tsx} -v",
+    "test": "tsc --noEmit true && npm run lint"
   },
   "author": "Supertiger",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^13.13.4",
+    "@types/node": "^14.0.27",
     "@types/node-fetch": "^2.5.7",
-    "@types/socket.io-client": "^1.4.32",
-    "typescript": "^3.8.3"
+    "@types/socket.io-client": "^1.4.33",
+    "@types/socketio-wildcard": "^2.0.3",
+    "@typescript-eslint/eslint-plugin": "^3.8.0",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint-plugin-jsdoc": "^30.2.1",
+    "standardx": "^5.0.0",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@discordjs/collection": "^0.1.5",
-    "jsonhtmlfyer": "^0.1.9",
+    "@discordjs/collection": "^0.1.6",
+    "jsonhtmlfyer": "^0.2.0",
     "node-fetch": "^2.6.0",
     "socket.io-client": "^2.3.0",
     "socketio-wildcard": "^2.0.0"
@@ -32,5 +39,56 @@
   "bugs": {
     "url": "https://github.com/supertiger1234/nertivia.js/issues"
   },
-  "homepage": "https://github.com/supertiger1234/nertivia.js#readme"
+  "homepage": "https://github.com/supertiger1234/nertivia.js#readme",
+  "standardx": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint/eslint-plugin"
+    ]
+  },
+  "eslintConfig": {
+    "rules": {
+      "prefer-const": "error",
+      "indent": [
+        "error",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "args": "all",
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "no-unused-expressions": "off",
+      "@typescript-eslint/no-unused-expressions": "error",
+      "camelcase": "off",
+      "jsdoc/check-examples": 1,
+      "jsdoc/check-indentation": 1,
+      "jsdoc/check-syntax": 1,
+      "jsdoc/no-types": 1,
+      "jsdoc/no-undefined-types": 1,
+      "jsdoc/require-description": 1,
+      "jsdoc/require-jsdoc": [
+        1,
+        {
+          "publicOnly": true
+        }
+      ],
+      "jsdoc/require-description-complete-sentence": 1,
+      "jsdoc/require-param-type": 0,
+      "jsdoc/require-returns-type": 0
+    },
+    "extends": [
+      "plugin:jsdoc/recommended"
+    ],
+    "plugins": [
+      "jsdoc"
+    ]
+  }
 }

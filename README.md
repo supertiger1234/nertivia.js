@@ -4,17 +4,6 @@ NodeJS library for Nertivia API
 ## Notice
 This library is in its early stages. A lot of features are missing. If you find any issues, make sure you post them in the issues page in GitHub.
 
-## Token
-Since bot users are not a thing right now, you can self bot.
-Make sure you do not make spam bots, ty :)
-
-To get your token:
-1. Open inspect element (`ctrl shift + i`)
-2. Go to the `Console` tab
-3. type in `localStorage.getItem("hauthid")`
-Your token should print out.
-
-
 ## Usage
 
 ```npm i nertivia.js```

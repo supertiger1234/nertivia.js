@@ -1,44 +1,42 @@
-import IUser from "./User";
+import { IUser } from './User'
 
-export default interface IAuthenticationData  {
-    user: IUser & User
-    serverMembers: ServerMember[]
-    dms: Channel[];
-    memberStatusArr: [[string, string]]
-    customStatusArr: [[string, string]],
-    serverRoles: ServerRoles[]
+export interface IAuthenticationData {
+  user: IUser & IUserAuth
+  serverMembers: IServerMemberAuth[]
+  dms: IChannelAuth[]
+  memberStatusArr: [[string, string]]
+  customStatusArr: [[string, string]],
+  serverRoles: IServerRoleAuth[]
 }
-interface ServerRoles {
-    name: string,
-    permissions: number,
-    deletable: boolean,
-    id: string,
-    server_id: string,
-    order: number,
-    color: string
+export interface IServerRoleAuth {
+  name: string,
+  permissions: number,
+  deletable: boolean,
+  id: string,
+  server_id: string,
+  order: number,
+  color: string
 }
-
-interface User {
-    uniqueID: string
-    servers: Servers[]
+export interface IUserAuth {
+  uniqueID: string
+  servers: IServerAuth[]
 }
-interface Servers {
-    name: string
-    creator: string
-    server_id: string
-    avatar?: string
-    banner?: string
-    channels: Channel[]
+export interface IServerAuth {
+  name: string
+  creator: string
+  server_id: string
+  avatar?: string
+  banner?: string
+  channels: IChannelAuth[]
 }
-interface Channel {
-    name: string
-    channelID: string
-    server_id?: string
-    recipients?: (IUser & User)[]
+export interface IChannelAuth {
+  name: string
+  channelID: string
+  server_id?: string
+  recipients?: (IUser & IUserAuth)[]
 }
-
-interface ServerMember {
-    type: string
-    member: IUser & User
-    server_id: string
+export interface IServerMemberAuth {
+  type: string
+  member: IUser & IUserAuth
+  server_id: string
 }
